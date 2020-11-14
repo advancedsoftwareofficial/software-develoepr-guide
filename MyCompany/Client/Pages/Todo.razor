@@ -12,6 +12,7 @@
     {
         <tr>
             <td>@item</td>
+            <td><button class="btn btn-primary" @onclick="() => { DeleteTodo(item); }">Delete</button></td>
         </tr>
     }
 </table>
@@ -24,5 +25,9 @@
     {
         Todos.Add(todo);
         todo = string.Empty;
+    }
+    private void DeleteTodo(string item)
+    {
+        Todos.Remove(Todos.Find(y => y == item));
     }
 }
