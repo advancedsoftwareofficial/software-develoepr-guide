@@ -1,0 +1,28 @@
+﻿@page "/todo"
+
+<h1>Todo List</h1>
+
+<p>Add Todo: <input type="text" @bind-value="todo" /><button class="btn btn-primary" @onclick="AddTodo">Add</button></p>
+
+<table>
+    <tr>
+        <td>Todo</td>
+    </tr>
+    @foreach (var item in Todos)
+    {
+        <tr>
+            <td>@item</td>
+        </tr>
+    }
+</table>
+
+@code {
+    private int currentCount = 0;
+    public List<string> Todos { get; set; } = new List<string>();
+    public string todo { get; set; }
+    private void AddTodo()
+    {
+        Todos.Add(todo);
+        todo = string.Empty;
+    }
+}
